@@ -27,7 +27,7 @@ export function PortalPreview() {
           </div>
           <div className="mt-7 flex flex-col sm:flex-row sm:items-center gap-4">
             <Link
-              href="/portal"
+              href="/portal/dashboard"
               className={cn(
                 buttonVariants({ variant: "default" }),
                 "h-auto text-base px-6 py-3"
