@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function FinalCta() {
   return (
@@ -12,14 +13,15 @@ export function FinalCta() {
           The discovery call is free, low-pressure, and 30 minutes. You&rsquo;ll
           know quickly whether we&rsquo;re right for each other.
         </p>
-        <Button
-          asChild
-          size="lg"
-          variant="secondary"
-          className="mt-8 text-base px-7 py-6"
+        <Link
+          href="/contact"
+          className={cn(
+            buttonVariants({ variant: "secondary" }),
+            "mt-8 h-auto text-base px-7 py-3"
+          )}
         >
-          <Link href="/contact">Book a discovery call</Link>
-        </Button>
+          Book a discovery call
+        </Link>
       </div>
     </section>
   );

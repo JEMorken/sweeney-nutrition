@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
@@ -67,17 +68,24 @@ export function Hero() {
           trusting it.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-          <Button asChild size="lg" className="text-base px-7 py-6 shadow-lg shadow-black/20">
-            <Link href="/contact">Book a free discovery call</Link>
-          </Button>
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="text-base px-7 py-6 bg-white/10 backdrop-blur-sm border-white/35 text-white hover:bg-white/20 hover:text-white"
+          <Link
+            href="/contact"
+            className={cn(
+              buttonVariants({ variant: "default" }),
+              "h-auto text-base px-7 py-3 shadow-lg shadow-black/20"
+            )}
           >
-            <Link href="/approach">See the approach</Link>
-          </Button>
+            Book a free discovery call
+          </Link>
+          <Link
+            href="/approach"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "h-auto text-base px-7 py-3 bg-white/10 backdrop-blur-sm border-white/35 text-white hover:bg-white/20 hover:text-white"
+            )}
+          >
+            See the approach
+          </Link>
         </div>
         <p className="mt-6 text-sm text-white/75">
           30 minutes · free · no commitment
