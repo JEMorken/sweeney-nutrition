@@ -70,7 +70,7 @@ export const week: DayEntry[] = [
     journal:
       "Cycle day 1. Tired in a deep way. Slept 5 hours and wanted more. The carb cravings were loud and I let them be loud, ate what I ate. That was hard, even if it sounds simple. Wednesdays keep ending up like this.",
     carolineResponse:
-      "Three Wednesdays in a row like this one. Not a coincidence anymore — let's plan around it. (We'll talk Tuesday.)",
+      "Four Wednesdays in a row now. Not a coincidence anymore — let's plan around it. (We'll talk Tuesday.)",
     flag: "concern",
   },
   {
@@ -131,7 +131,18 @@ const partialHabits = (active: string[]) =>
 
 const fourWeeksAgo: DayEntry[] = [
   { date: "2026-05-04", dayOfWeek: "Monday", habits: partialHabits(["move", "water"]), mood: 3, energy: 3, hunger: 3, sleepHours: 7, flag: null },
-  { date: "2026-05-05", dayOfWeek: "Tuesday", habits: partialHabits(["water", "hunger", "outside"]), mood: 3, energy: 3, hunger: 3, sleepHours: 7, flag: null },
+  {
+    date: "2026-05-05",
+    dayOfWeek: "Tuesday",
+    habits: partialHabits(["water"]),
+    mood: 2,
+    energy: 2,
+    hunger: 3,
+    sleepHours: 5.5,
+    journal:
+      "Slept terribly. Couldn't shut off thoughts about Q1. Functioned but barely. Ate at my desk again — twice.",
+    flag: null,
+  },
   {
     date: "2026-05-06",
     dayOfWeek: "Wednesday",
@@ -176,7 +187,18 @@ const threeWeeksAgo: DayEntry[] = [
     flag: "concern",
   },
   { date: "2026-05-14", dayOfWeek: "Thursday", habits: partialHabits(["move", "water", "outside"]), mood: 3, energy: 4, hunger: 3, sleepHours: 7, flag: null },
-  { date: "2026-05-15", dayOfWeek: "Friday", habits: partialHabits(["water", "hunger", "outside"]), mood: 4, energy: 4, hunger: 3, sleepHours: 7, flag: null },
+  {
+    date: "2026-05-15",
+    dayOfWeek: "Friday",
+    habits: partialHabits(["water", "outside"]),
+    mood: 2,
+    energy: 3,
+    hunger: 4,
+    sleepHours: 6,
+    journal:
+      "Friend cancelled, ended up alone with a pint of ice cream and a show I've already seen. Could have called my sister. Didn't.",
+    flag: null,
+  },
   { date: "2026-05-16", dayOfWeek: "Saturday", habits: fullHabits, mood: 5, energy: 4, hunger: 3, sleepHours: 8, flag: null },
   {
     date: "2026-05-17",
@@ -255,13 +277,13 @@ export const messages: CarolineMessage[] = [
 ];
 
 export const carolineCelebration = {
-  text: "Twelve days of pausing for hunger before eating. None of those days were easy. That's the practice — quietly, slowly, real.",
+  text: "Twelve days in a row of pausing first. I know what some of those days cost — and you did it anyway. Celebrating you over here.",
   date: "2026-05-31",
 };
 
 export const carolinePatternCallout = {
   title: "Caroline noticed a pattern",
-  text: "Wednesdays are consistently your harder days — energy low, sleep short, habits drift. That's three weeks now. Let's talk Tuesday about what we can put in place to meet Wednesdays differently, instead of bracing for them.",
+  text: "Wednesdays are consistently your harder days — energy low, sleep short, habits drift. Four weeks running. Let's talk Tuesday about what we can put in place to meet Wednesdays differently, instead of bracing for them.",
 };
 
 export const rhythms = [
