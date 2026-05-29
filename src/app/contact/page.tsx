@@ -5,6 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail } from "lucide-react";
 
+export const metadata = {
+  title: "Contact — Sweeney Nutrition",
+};
+
 export default function ContactPage() {
   return (
     <section id="contact" className="mx-auto max-w-3xl px-6 py-24">
@@ -61,7 +65,8 @@ export default function ContactPage() {
       <div className="mt-10 text-center text-sm text-muted-foreground">
         <p className="inline-flex items-center gap-2">
           <Mail className="h-4 w-4" />
-          Or email directly: <span className="text-foreground/85">hello@sweeneynutrition.com</span>
+          Or email directly:{" "}
+          <span className="text-foreground/85">hello@sweeneynutrition.com</span>
         </p>
       </div>
     </section>

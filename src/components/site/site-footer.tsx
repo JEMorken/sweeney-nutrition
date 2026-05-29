@@ -16,8 +16,8 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Holistic nutrition for women ready to stop fighting their body and
-              start trusting it.
+              Holistic nutrition for women ready to stop fighting their body
+              and start trusting it.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export function SiteFooter() {
 
           <div>
             <h3 className="text-sm font-medium text-foreground">Get in touch</h3>
-            <div className="mt-3 flex items-center gap-4 text-muted-foreground">
+            <div className="mt-3 flex items-center gap-3 text-muted-foreground">
               <a
                 href="#"
                 aria-label="Instagram"
@@ -74,8 +74,10 @@ export function SiteFooter() {
         <Separator className="my-8" />
 
         <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Sweeney Nutrition. All rights reserved.</p>
-          <p>Made with care in the shadow of the Tetons.</p>
+          <p>
+            © {new Date().getFullYear()} Sweeney Nutrition. All rights reserved.
+          </p>
+          <p>Wyoming-based · available everywhere.</p>
         </div>
       </div>
     </footer>
