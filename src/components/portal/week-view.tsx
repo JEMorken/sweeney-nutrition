@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PatternGrid } from "./pattern-grid";
 import { CorrelationChart } from "./correlation-chart";
 import { Moments } from "./moments";
+import { CarolinePatternCallout } from "./caroline-pattern-callout";
 import { patternObservations } from "./portal-data";
 import { Sparkle } from "lucide-react";
 
@@ -9,6 +10,7 @@ export function WeekView() {
   return (
     <div className="space-y-10">
       <PatternGrid />
+      <CarolinePatternCallout />
       <CorrelationChart />
       <Moments />
 

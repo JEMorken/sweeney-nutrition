@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 
 type DotScaleProps = {
@@ -5,6 +7,7 @@ type DotScaleProps = {
   value: number;
   max?: number;
   accent?: "primary" | "accent" | "muted";
+  onChange?: (next: number) => void;
 };
 
 export function DotScale({
@@ -12,7 +15,9 @@ export function DotScale({
   value,
   max = 5,
   accent = "primary",
+  onChange,
 }: DotScaleProps) {
+  const interactive = Boolean(onChange);
   return (
     <div>
       <div className="flex items-baseline justify-between">
@@ -21,24 +26,32 @@ export function DotScale({
           {value}/{max}
         </span>
       </div>
-      <div className="mt-1.5 flex items-center gap-1.5">
+      <div className="mt-2 flex items-center gap-1.5">
         {Array.from({ length: max }, (_, i) => i + 1).map((i) => {
           const active = i <= value;
-          return (
-            <span
-              key={i}
-              className={cn(
-                "h-2.5 flex-1 rounded-full transition-colors",
-                active
-                  ? accent === "accent"
-                    ? "bg-accent"
-                    : accent === "muted"
-                      ? "bg-muted-foreground/60"
-                      : "bg-primary"
-                  : "bg-border/70"
-              )}
-            />
+          const className = cn(
+            "h-3 flex-1 rounded-full transition-colors",
+            interactive && "cursor-pointer hover:opacity-90",
+            active
+              ? accent === "accent"
+                ? "bg-accent"
+                : accent === "muted"
+                  ? "bg-muted-foreground/60"
+                  : "bg-primary"
+              : "bg-border/70 hover:bg-border"
           );
+          if (interactive) {
+            return (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Set ${label.toLowerCase()} to ${i}`}
+                onClick={() => onChange?.(i)}
+                className={className}
+              />
+            );
+          }
+          return <span key={i} className={className} />;
         })}
       </div>
     </div>

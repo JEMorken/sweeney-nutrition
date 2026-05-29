@@ -13,7 +13,8 @@ export type DayEntry = {
   energy: number;
   hunger: number;
   sleepHours: number;
-  journal: string;
+  journal?: string;
+  carolineResponse?: string;
   flag: Flag;
 };
 
@@ -43,7 +44,7 @@ export const week: DayEntry[] = [
     hunger: 3,
     sleepHours: 6.5,
     journal:
-      "Slept terribly but had a good walk. Felt anxious about tomorrow's meeting all afternoon, ate a few too many crackers and... that's fine, I think? I noticed and that's the work.",
+      "Slept badly. Good walk anyway. Anxious about tomorrow's meeting all afternoon, ate a few too many crackers. I noticed. Not nothing.",
     flag: null,
   },
   {
@@ -55,7 +56,7 @@ export const week: DayEntry[] = [
     hunger: 3,
     sleepHours: 7.5,
     journal:
-      "Decent energy. Made the lentil thing Caroline suggested. Felt full without feeling stuffed for the first time in a while.",
+      "Decent energy. Made the lentil thing Caroline suggested. Felt full without feeling stuffed — first time in a while.",
     flag: null,
   },
   {
@@ -65,9 +66,11 @@ export const week: DayEntry[] = [
     mood: 2,
     energy: 2,
     hunger: 4,
-    sleepHours: 9,
+    sleepHours: 5.5,
     journal:
-      "Cycle day 1. Tired. Slept 9 hours and still wanted more. Ate more carbs than usual and didn't fight it. The cravings actually feel different when I just let them be there.",
+      "Cycle day 1. Tired in a deep way. Slept 5 hours and wanted more. The carb cravings were loud and I let them be loud, ate what I ate. That was hard, even if it sounds simple. Wednesdays keep ending up like this.",
+    carolineResponse:
+      "Three Wednesdays in a row like this one. Not a coincidence anymore — let's plan around it. (We'll talk Tuesday.)",
     flag: "concern",
   },
   {
@@ -79,7 +82,7 @@ export const week: DayEntry[] = [
     hunger: 3,
     sleepHours: 7,
     journal:
-      "Good day. Walked to the coffee place. Made dinner instead of ordering. Hungry around 8pm and ate a real second dinner. No shame.",
+      "Walked to the coffee place. Made dinner instead of ordering. Hungry around 8pm and ate a real second dinner. No shame about it.",
     flag: null,
   },
   {
@@ -114,9 +117,118 @@ export const week: DayEntry[] = [
     hunger: 3,
     sleepHours: 8,
     journal:
-      "Reflective day. Looked back at the week and noticed how much less I'm thinking about food, even when I'm eating it. Something is loosening.",
+      "Reflective day. Looked back at the week and noticed how much less I'm thinking about food, even when I'm eating it. Something is loosening. It hasn't been easy. But something is.",
+    carolineResponse:
+      'Megan — "Something is loosening" is exactly the language I hoped you\'d find. None of it has been easy. We\'ll sit with this on Tuesday.',
     flag: "highlight",
   },
+];
+
+const fullHabits = { move: true, "screen-free": true, water: true, hunger: true, outside: true };
+const noHabits = { move: false, "screen-free": false, water: false, hunger: false, outside: false };
+const partialHabits = (active: string[]) =>
+  Object.fromEntries(habits.map((h) => [h.id, active.includes(h.id)]));
+
+const fourWeeksAgo: DayEntry[] = [
+  { date: "2026-05-04", dayOfWeek: "Monday", habits: partialHabits(["move", "water"]), mood: 3, energy: 3, hunger: 3, sleepHours: 7, flag: null },
+  { date: "2026-05-05", dayOfWeek: "Tuesday", habits: partialHabits(["water", "hunger", "outside"]), mood: 3, energy: 3, hunger: 3, sleepHours: 7, flag: null },
+  {
+    date: "2026-05-06",
+    dayOfWeek: "Wednesday",
+    habits: noHabits,
+    mood: 2,
+    energy: 2,
+    hunger: 4,
+    sleepHours: 5,
+    journal:
+      "Crashed at noon. Worked through lunch and felt awful by 3. Tried to recover with more coffee, which made it worse. Long day.",
+    flag: "concern",
+  },
+  { date: "2026-05-07", dayOfWeek: "Thursday", habits: partialHabits(["move", "water", "outside"]), mood: 3, energy: 3, hunger: 3, sleepHours: 7, flag: null },
+  { date: "2026-05-08", dayOfWeek: "Friday", habits: partialHabits(["water", "outside"]), mood: 3, energy: 4, hunger: 3, sleepHours: 6.5, flag: null },
+  { date: "2026-05-09", dayOfWeek: "Saturday", habits: partialHabits(["move", "screen-free", "water", "hunger"]), mood: 4, energy: 4, hunger: 3, sleepHours: 8, flag: null },
+  {
+    date: "2026-05-10",
+    dayOfWeek: "Sunday",
+    habits: fullHabits,
+    mood: 4,
+    energy: 3,
+    hunger: 3,
+    sleepHours: 8,
+    journal: "Restful. Took a long walk. Made soup with my hands instead of from a recipe.",
+    flag: null,
+  },
+];
+
+const threeWeeksAgo: DayEntry[] = [
+  { date: "2026-05-11", dayOfWeek: "Monday", habits: partialHabits(["move", "water", "outside"]), mood: 3, energy: 3, hunger: 3, sleepHours: 7, flag: null },
+  { date: "2026-05-12", dayOfWeek: "Tuesday", habits: partialHabits(["move", "screen-free", "water", "hunger"]), mood: 4, energy: 4, hunger: 3, sleepHours: 7.5, flag: null },
+  {
+    date: "2026-05-13",
+    dayOfWeek: "Wednesday",
+    habits: partialHabits(["screen-free", "hunger"]),
+    mood: 2,
+    energy: 2,
+    hunger: 4,
+    sleepHours: 5,
+    journal:
+      "Hard meeting in the morning. Anxiety lingered the whole day. Wanted to skip dinner but made myself eat something small. Did not feel easy.",
+    flag: "concern",
+  },
+  { date: "2026-05-14", dayOfWeek: "Thursday", habits: partialHabits(["move", "water", "outside"]), mood: 3, energy: 4, hunger: 3, sleepHours: 7, flag: null },
+  { date: "2026-05-15", dayOfWeek: "Friday", habits: partialHabits(["water", "hunger", "outside"]), mood: 4, energy: 4, hunger: 3, sleepHours: 7, flag: null },
+  { date: "2026-05-16", dayOfWeek: "Saturday", habits: fullHabits, mood: 5, energy: 4, hunger: 3, sleepHours: 8, flag: null },
+  {
+    date: "2026-05-17",
+    dayOfWeek: "Sunday",
+    habits: fullHabits,
+    mood: 4,
+    energy: 4,
+    hunger: 3,
+    sleepHours: 8.5,
+    journal: "Made breakfast slowly. Felt like myself for a moment. The kind of moment I want more of.",
+    carolineResponse: "Those moments matter more than the meal does. Keep noticing them.",
+    flag: null,
+  },
+];
+
+const lastWeek: DayEntry[] = [
+  { date: "2026-05-18", dayOfWeek: "Monday", habits: partialHabits(["move", "water", "outside"]), mood: 4, energy: 3, hunger: 3, sleepHours: 7, flag: null },
+  { date: "2026-05-19", dayOfWeek: "Tuesday", habits: partialHabits(["move", "screen-free", "water", "hunger"]), mood: 4, energy: 4, hunger: 3, sleepHours: 7.5, flag: null },
+  {
+    date: "2026-05-20",
+    dayOfWeek: "Wednesday",
+    habits: partialHabits(["water", "hunger"]),
+    mood: 2,
+    energy: 2,
+    hunger: 4,
+    sleepHours: 5.5,
+    journal:
+      "On edge all day for no particular reason. Slept poorly the night before. Wanted to numb out with TV and food and mostly let myself. Hard day.",
+    carolineResponse: "This is the third Wednesday like this. Worth holding up to the light together.",
+    flag: "concern",
+  },
+  { date: "2026-05-21", dayOfWeek: "Thursday", habits: partialHabits(["move", "water", "outside"]), mood: 4, energy: 4, hunger: 3, sleepHours: 7, flag: null },
+  { date: "2026-05-22", dayOfWeek: "Friday", habits: partialHabits(["water", "hunger", "outside"]), mood: 4, energy: 4, hunger: 3, sleepHours: 7.5, flag: null },
+  { date: "2026-05-23", dayOfWeek: "Saturday", habits: fullHabits, mood: 5, energy: 5, hunger: 3, sleepHours: 8, flag: null },
+  {
+    date: "2026-05-24",
+    dayOfWeek: "Sunday",
+    habits: fullHabits,
+    mood: 4,
+    energy: 4,
+    hunger: 3,
+    sleepHours: 8,
+    journal: "Long phone call with mom. Cooked while talking. Both felt good — different from food being a chore.",
+    flag: null,
+  },
+];
+
+export const fourWeekHistory: DayEntry[][] = [
+  fourWeeksAgo,
+  threeWeeksAgo,
+  lastWeek,
+  week,
 ];
 
 export const messages: CarolineMessage[] = [
@@ -124,37 +236,44 @@ export const messages: CarolineMessage[] = [
     id: "m1",
     from: "caroline",
     date: "2026-05-31",
-    text:
-      "Megan — read your Sunday reflection just now. \"Something is loosening\" is exactly the language I hoped you'd find. We'll sit with this on Tuesday.",
+    text: 'Megan — read your Sunday reflection just now. "Something is loosening" is exactly the language I hoped you\'d find. None of it has been easy. We\'ll sit with this on Tuesday.',
     referencesDate: "2026-05-31",
   },
   {
     id: "m2",
     from: "caroline",
     date: "2026-05-28",
-    text:
-      "Saw your Wednesday entry. The cycle-day-1 cravings notice is huge — your body asked, you listened, no fight. Let's talk about the pattern Tuesday.",
+    text: "Saw your Wednesday entry. The cycle-day-1 cravings notice is huge — your body asked, you listened. That's the harder thing, not the easier one.",
     referencesDate: "2026-05-27",
   },
   {
     id: "m3",
     from: "client",
     date: "2026-05-27",
-    text:
-      "I felt like I 'failed' the carb thing today and then realized I was about to say that out loud. Catching it earlier.",
+    text: "I felt like I 'failed' the carb thing today and then realized I was about to say that out loud. Catching it earlier, even on the hard days.",
   },
 ];
 
+export const carolineCelebration = {
+  text: "Twelve days of pausing for hunger before eating. None of those days were easy. That's the practice — quietly, slowly, real.",
+  date: "2026-05-31",
+};
+
+export const carolinePatternCallout = {
+  title: "Caroline noticed a pattern",
+  text: "Wednesdays are consistently your harder days — energy low, sleep short, habits drift. That's three weeks now. Let's talk Tuesday about what we can put in place to meet Wednesdays differently, instead of bracing for them.",
+};
+
 export const rhythms = [
-  { label: "days of finishing meals without distraction", value: 12 },
+  { label: "days of noticing hunger before eating", value: 12 },
   { label: "weeks of consistent sleep (7+ hrs)", value: 3 },
   { label: "weeks since the last “I blew it” thought", value: 5 },
 ];
 
 export const patternObservations = [
-  "You sleep less on Wednesdays.",
-  "Energy follows habit days — about 24 hours later.",
+  "Energy follows habit days — about a day later.",
   "Mood lifts on days you spend 10+ minutes outside.",
+  "Sleep dips before Wednesdays, every week.",
 ];
 
 export function wellbeingScore(d: DayEntry) {
@@ -166,19 +285,3 @@ export function habitCompletionRate(d: DayEntry) {
   const done = habits.filter((h) => d.habits[h.id]).length;
   return done / total;
 }
-
-const fourWeekScale = [0.75, 0.85, 0.95, 1];
-export const fourWeekHistory: DayEntry[][] = fourWeekScale.map((scale, weekIdx) =>
-  week.map((d, dayIdx) => {
-    const completed = Object.entries(d.habits).map(([k, v], i) => {
-      const shouldDrop = (weekIdx + dayIdx + i) % 7 < (1 - scale) * 7;
-      return [k, v && !shouldDrop] as const;
-    });
-    return {
-      ...d,
-      habits: Object.fromEntries(completed),
-      mood: Math.max(1, Math.round(d.mood * scale - (weekIdx === 0 ? 0.5 : 0))),
-      energy: Math.max(1, Math.round(d.energy * scale - (weekIdx === 0 ? 0.5 : 0))),
-    };
-  })
-);
